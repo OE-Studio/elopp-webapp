@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { PlusIcon } from "../../../../assets/icons/plus";
 import { updateCart } from "../../../../features/cartSlice";

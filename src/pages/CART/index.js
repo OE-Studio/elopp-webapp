@@ -1,12 +1,18 @@
-import React  from 'react'
+import React,{useEffect}  from 'react'
 import { Header } from "../../components/HEADER";
 import {CartItemCard} from './components/cartItemCard'
 import {CheckoutForm} from './components/checkoutForm'
 import {DetailsConfirmation} from './components/detailsConfirmation'
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
+import {changeCurrentStep} from '../../features/cartSlice'
 
 export const Cart = () =>{
     const {currentStep} = useSelector(state=>state.cart)
+
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(changeCurrentStep("details"))
+    }, [dispatch])
 
     return (
         <div>

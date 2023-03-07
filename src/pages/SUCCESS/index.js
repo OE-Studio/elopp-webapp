@@ -39,7 +39,7 @@ export const SuccessPage = ()=>{
         }
 
         confirmPayment()
-        //react-hooks/exhaustive-deps
+        // eslint-disable-next-line
     }, [])
 
     const copyToClipboard = () =>{
@@ -57,28 +57,32 @@ export const SuccessPage = ()=>{
     }
 
     const track = async() =>{
-            try{
-                let response = await axios.post(endpoints.trackOrder, {
-                    trackingId:trackingCode
-                })
-                let data = await response.data
+        setLoadingDownload(true)
 
-                if(data.success){
-                    setOrder(data.currentTransaction)
-                }
+        try{
+            let response = await axios.post(endpoints.trackOrder, {
+                trackingId:trackingCode
+            })
+            let data = await response.data
+
+            if(data.success){
+                setOrder(data.currentTransaction)
 
                 setTimeout(()=>{
+                    setLoadingDownload(false)
                     let elem = document.querySelector('.print')
                     var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
                     WinPrint.document.write(elem.innerHTML);
                     WinPrint.document.close();
                     WinPrint.focus();
                     WinPrint.print();
+                    window.close()
                 }, 3000)
             }
-            catch(err){
-
-            }
+        }
+        catch(err){
+            setLoadingDownload(false)
+        }
     }
 
     return (
