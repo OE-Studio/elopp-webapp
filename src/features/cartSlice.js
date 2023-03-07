@@ -9,7 +9,11 @@ const initialState = {
     userDetails:JSON.parse(sessionStorage.getItem('userDetails') || "{}"),
     currentStep:"checkout",
     loadingItems:false,
-    allItems:[]
+    allItems:[],
+    loadingOrder:false,
+    currentOrder:{},
+    filterList:["T-shirt","Notepad","Hoodie","Wrist band","Stickers","Tote bag","Sport bottle","Mug","Cap","Phone case"],
+    loadingSubmitOrder:false
 }
 
 export const submitOrder = createAsyncThunk(
@@ -20,7 +24,7 @@ export const submitOrder = createAsyncThunk(
             let data = await response.data
 
             if(data?.success) {
-                window.open(data.message, '_blank')
+                window.location.href = data.message
                 return data.message
             }
         }
@@ -42,6 +46,26 @@ export const fetchAllIItems = createAsyncThunk(
         catch(err){}
     }
 )
+
+export const fetchOrder = createAsyncThunk(
+    'all orders',
+    async(payload, thunkAPI)=>{
+        try{
+            let response = await axios.post(endpoints.trackOrder, {
+                trackingId:payload
+            })
+            let data = await response.data
+
+            if(data.success){
+                return data.currentTransaction
+            }
+        }
+        catch(err){
+
+        }
+    }
+)
+
 
 const cart = createSlice({
     name:"cart",
@@ -88,19 +112,32 @@ const cart = createSlice({
         },
         changeCurrentStep:(state, {payload})=>{
             state.currentStep = payload
+        },
+        updateFilterList:(state, {payload})=>{
+
+            if(state.filterList.find(arr=>arr === payload)){
+                let filtered = state.filterList.filter(item=>{
+                    return item !== payload
+                })
+                state.filterList = filtered
+            }
+            else {
+                state.filterList = [...state.filterList, payload]
+            }
         }
     },
     extraReducers:{
         [submitOrder.pending]:(state, {payload})=>{
-
+            state.loadingSubmitOrder = false
         },
         [submitOrder.fulfilled]:(state, {payload})=>{
-
+            state.loadingSubmitOrder = true
         },
         [submitOrder.rejected]:(state, {payload})=>{
-
+            state.loadingSubmitOrder = true
         },
 
+        // Fetch all items
         [fetchAllIItems.pending]:(state, {payload})=>{
             state.loadingItems = true
         },
@@ -111,9 +148,21 @@ const cart = createSlice({
         [fetchAllIItems.rejected]:(state, {payload})=>{
             state.loadingItems = false
         },
+
+        // Fetch orders
+        [fetchOrder.pending]:(state, {payload})=>{
+            state.loadingOrder = true
+        },
+        [fetchOrder.fulfilled]:(state, {payload})=>{
+            state.loadingOrder = false
+            state.currentOrder = payload
+        },
+        [fetchOrder.rejected]:(state, {payload})=>{
+            state.loadingOrder = false
+        },
     }
 })
 
-export const {updateCart, changeCurrentItem, updateSingleItem, deleteCartItem, updateUserDetails, changeCurrentStep} = cart.actions
+export const {updateCart, changeCurrentItem, updateSingleItem, deleteCartItem, updateUserDetails, changeCurrentStep, updateFilterList} = cart.actions
 
 export default cart.reducer

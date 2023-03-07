@@ -24,13 +24,16 @@ export const SuccessPage = ()=>{
 
     useEffect(()=>{
         let reference = searchParams.get('reference')
+        const myAbortController = new AbortController();
+
         const confirmPayment = async()=>{
             try{
-                let response = await axios.post(endpoints.confirmPayment, {reference})
+                let response = await axios.post(endpoints.confirmPayment, {reference}, { signal: myAbortController.signal })
                 let data = await response.data
 
                if(data.success) {
-                setTrackingCode(data.trackingId)
+                    setTrackingCode(data.trackingId)
+                    sessionStorage.clear()
                }
             }
             catch(err){
@@ -39,6 +42,8 @@ export const SuccessPage = ()=>{
         }
 
         confirmPayment()
+
+        return (()=>myAbortController.abort())
         // eslint-disable-next-line
     }, [])
 
@@ -76,7 +81,6 @@ export const SuccessPage = ()=>{
                     WinPrint.document.close();
                     WinPrint.focus();
                     WinPrint.print();
-                    window.close()
                 }, 3000)
             }
         }

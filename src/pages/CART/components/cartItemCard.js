@@ -49,13 +49,12 @@ const Card = ({item})=>{
             <div className="flex items-start lg:items-center gap-8">
             <div className="flex items-center justify-center w-32 lg:w-64 h-32 lg:h-64">
                 <div className="w-32 lg:w-64 h-32 lg:h-64" style={{backgroundImage:`url(${selectedColour.img.replace(" ", "")})`, backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
-                    {/* <img src={selectedColour.img} alt={name} className="w-32 lg:w-64"/> */}
                 </div>
             </div>
             <div className="w-full">
                 {/* top */}
                 <div className="flex justify-between items-start w-full">
-                    <div className="inline-block lg:border-b lg:border-[#DFDFDF]">
+                    <div className="block w-3/4">
                         <p className="text-lg">{name}</p>
                         <p className="xl:py-4 text-sm text-[#898989]">{description}</p>
                     </div>
@@ -66,11 +65,11 @@ const Card = ({item})=>{
                 <div className="mt-20 space-y-4 hidden lg:block">
                     <div className="flex w-auto gap-4">
                         <div className="flex items-center text-[#898989] text-lg">Qty</div>
-                        <div onClick={removeOne} className="w-9 h-9 soft-shadow rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                        <div onClick={removeOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                             <DarkMinus/>
                         </div>
                         <div className="flex items-center">{newQuantity || 0}</div>
-                        <div onClick={addOne} className="w-9 h-9 soft-shadow rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                        <div onClick={addOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                             <DarkPlus/>
                         </div>
                     </div>
@@ -86,13 +85,13 @@ const Card = ({item})=>{
                                     })}
                                 </select>
 
-                                <div className="absolute top-1/2 right-1 -translate-y-1/2 inline-block pointer-events-none">
+                                <div className="absolute top-1/2 right-2 -translate-y-1/2 inline-block pointer-events-none">
                                     <ArrowDown/>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="w-9 h-9 soft-shadow flex items-center justify-center rounded-full bg-white" onClick={()=>dispatch(deleteCartItem(id))}>
+                        <div className="w-9 h-9 soft-shadow flex items-center justify-center rounded-full bg-white cursor-pointer" onClick={()=>dispatch(deleteCartItem(id))}>
                             <DeleteIcon/>
                         </div>
                     </div>
@@ -105,11 +104,11 @@ const Card = ({item})=>{
                 <div className="mt-6 space-y-4">
                     <div className="flex items-center justify-between">
                         <div className="flex w-auto gap-4">
-                            <div onClick={removeOne} className="w-9 h-9 soft-shadow rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                            <div onClick={removeOne} className="w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                                 <DarkMinus/>
                             </div>
                             <div className="flex items-center">{newQuantity || 0}</div>
-                            <div onClick={addOne} className="w-9 h-9 soft-shadow rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                            <div onClick={addOne} className="w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                                 <DarkPlus/>
                             </div>
                         </div>
@@ -121,7 +120,7 @@ const Card = ({item})=>{
                                 })}
                             </select>
 
-                            <div className="absolute top-1/2 right-1 -translate-y-1/2 inline-block pointer-events-none">
+                            <div className="absolute top-1/2 right-2 -translate-y-1/2 inline-block pointer-events-none">
                                 <ArrowDown/>
                             </div>
                         </div>

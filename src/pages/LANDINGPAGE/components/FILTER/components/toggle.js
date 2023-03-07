@@ -2,7 +2,9 @@ import React from "react";
 import Checkbox from "react-custom-checkbox";
 import { CheckIcon } from "../../../../../assets/icons/check";
 
-export const ToggleComp = ({label, onChange}) =>{
+export const ToggleComp = ({label, onChange, checked}) =>{
+    
+    
     return (
         <div className="flex items-center justify-between py-2 w-full">
             <div className="text-base lg:text-sm">{label}</div>
@@ -11,10 +13,11 @@ export const ToggleComp = ({label, onChange}) =>{
                 <Checkbox
                     icon={<CheckIcon/>}
                     name="my-input"
-                    checked={true}
+                    checked={checked}
                     onChange={(value, event) => {
-                        onChange()
+                        onChange(value, label)
                     }}
+                    disabled={label === 'All items'}
                     borderColor="#282828"
                     style={{ cursor: "pointer", borderRadius:"0px", borderWidth:"1px" }}
                 />

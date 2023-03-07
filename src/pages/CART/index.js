@@ -11,7 +11,7 @@ export const Cart = () =>{
 
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(changeCurrentStep("details"))
+        dispatch(changeCurrentStep("checkout"))
     }, [dispatch])
 
     return (

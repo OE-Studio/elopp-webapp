@@ -19,17 +19,17 @@ const NavBar = () =>{
                 </Link>
 
                 <div className="flex items-center gap-4">
-                    <div className="inline-flex justify-center items-center gap-2 bg-white h-9 pl-3 pr-4 rounded-full soft-shadow">
+                    <Link to="/tracker" className="inline-flex justify-center items-center gap-2 bg-white h-9 pl-3 pr-4 rounded-full soft-shadow cursor-pointer">
                         <TruckIcon/>
                         Track order
-                    </div>
+                    </Link>
                     <Link to="/cart" className="inline-flex justify-center items-center h-9 w-9 rounded-full bg-white soft-shadow relative">
                         <BagIcon/>
 
-                        <div className="w-[14px] h-[14px] rounded-full bg-[#FF6A6A] text-white text-[10px] flex items-center justify-center absolute top-0 right-0">{cart.length}</div>
+                        {cart.length > 0 && <div className="w-[14px] h-[14px] rounded-full bg-[#FF6A6A] text-white text-[10px] flex items-center justify-center absolute top-0 right-0">{cart.length}</div>}
                     </Link>
 
-                    <Link to="/essay" className="inline-flex justify-center items-center h-9 w-9 rounded-full bg-white soft-shadow relative">
+                    <Link to="/article" className="inline-flex justify-center items-center h-9 w-9 rounded-full bg-white soft-shadow relative">
                         <BookIcon/>
                     </Link>
                 </div>

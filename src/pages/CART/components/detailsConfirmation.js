@@ -7,9 +7,10 @@ import {CallIcon} from '../../../assets/icons/call'
 import {LocationIcon} from '../../../assets/icons/location'
 import {SmileyIcon} from '../../../assets/icons/smiley'
 import { submitOrder } from "../../../features/cartSlice";
+import { Loader } from "../../../assets/icons/loader";
 
 export const DetailsConfirmation = () =>{
-    const {cart, userDetails} = useSelector(state=>state.cart)
+    const {cart, userDetails, loadingSubmitOrder} = useSelector(state=>state.cart)
     const [totalAmount, setTotalAmount] = useState(0)
 
     useEffect(()=>{
@@ -23,6 +24,7 @@ export const DetailsConfirmation = () =>{
     }, [cart])
 
     const dispatch = useDispatch()
+
     const processPayment = (e) =>{
         e.preventDefault()
 
@@ -30,7 +32,7 @@ export const DetailsConfirmation = () =>{
             let obj = {}
             obj.itemId = cart.uuid
             obj.price = cart.price
-            obj.color = cart.selectedColour.colour
+            obj.color = cart.selectedColour.color
             obj.size = cart.size
             obj.quantity = cart.quantity
 
@@ -43,7 +45,6 @@ export const DetailsConfirmation = () =>{
         }
 
         dispatch(submitOrder(payload))
-
     }
 
     return (
@@ -80,8 +81,9 @@ export const DetailsConfirmation = () =>{
                     </div>
 
                     <div className="flex justify-end">
-                        <button onClick={processPayment} className="bg-black flex w-full lg:w-auto lg:inline-flex items-center justify-between lg:justify-center gap-2 text-white h-12 lg:h-9 px-3 rounded-full mt-4">
-                            Pay now <ArrowRight/>
+                        <button onClick={processPayment} disabled={loadingSubmitOrder} className="bg-black flex w-full lg:w-auto lg:inline-flex items-center justify-between lg:justify-center gap-2 text-white h-12 lg:h-9 px-3 rounded-full mt-4 disabled:cursor-progress">
+                            Pay now 
+                            {loadingSubmitOrder ? <Loader/> : <ArrowRight/>}
                         </button>
                     </div>
                 </div>
