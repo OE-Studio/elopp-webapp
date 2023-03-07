@@ -1,0 +1,13 @@
+.invoice {
+   width: 100%; 
+}
+
+.invoice .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.invoice .header .left, .invoice .header .right{
+    display: inline-block;
+}

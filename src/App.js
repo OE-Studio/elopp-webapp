@@ -7,6 +7,7 @@ import { DetailsCheck } from "./pages/DETAILSCONFIRMATION";
 import { Checkout } from "./pages/CHECKOUT";
 import { Essay } from "./pages/ESSAY";
 import { Tracker } from "./pages/TRACKER";
+import { SuccessPage } from "./pages/SUCCESS";
 
 const App = ()=>{
   return (
@@ -19,6 +20,7 @@ const App = ()=>{
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/essay" element={<Essay/>}/>
                 <Route path="/tracker" element={<Tracker/>}/>
+                <Route path="/success" element={<SuccessPage/>}/>
                 <Route path="/order-confirmation" element={<DetailsCheck/>}/>
               </Route>
               
