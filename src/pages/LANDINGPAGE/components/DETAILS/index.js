@@ -9,6 +9,7 @@ import { CloseIcon } from "../../../../assets/icons/close";
 import { SuccessIcon } from "../../../../assets/icons/success";
 import { DarkMinus } from "../../../../assets/icons/darkMinus";
 import { DarkPlus } from "../../../../assets/icons/darkPlus";
+import { useNavigate } from "react-router-dom";
 
 
 export const ItemDetails = () =>{
@@ -51,16 +52,23 @@ export const ItemDetails = () =>{
         dispatch(changeCurrentItem())
     }
 
+    const navigate = useNavigate()
+
+    const handleCheckout = () =>{
+        dispatch(changeCurrentItem())
+        navigate("/cart")
+    }
+
     return (
         <div className="w-full">
             <div className="flex items-center justify-between sticky top-0 bg-white">
                 <div onClick={changeCurrentHandler} className="w-9 h-9 rounded-full flex items-center justify-center soft-shadow border border-[#DFDFDF]"><CloseIcon/></div>
 
-                <Link to="/cart" className="inline-flex justify-center items-center h-9 w-9 rounded-full bg-white soft-shadow relative">
+                <div onClick={handleCheckout} className="inline-flex justify-center items-center h-9 w-9 rounded-full bg-white soft-shadow relative">
                     <BagIcon/>
 
                     <div className="w-[14px] h-[14px] rounded-full bg-[#FF6A6A] text-white text-[10px] flex items-center justify-center absolute top-0 right-0">{cart.length}</div>
-                </Link>
+                </div>
             </div>
 
             <div className="mt-11">
