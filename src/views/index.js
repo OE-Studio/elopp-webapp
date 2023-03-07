@@ -11,7 +11,7 @@ export const MainView = () =>{
         window.addEventListener("load", ()=>{
             setTimeout(()=>{
                 setLoad(true)
-            }, 3000)
+            }, 3500)
         })
 
         return(()=>false)

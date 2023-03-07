@@ -36,13 +36,13 @@ export const Countdown =() =>{
 
             <div className="inline-block new-container mx-auto">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-                    <div className="text-6xl font-bold leading-none grotesk">Elluu P!</div>
+                    <div className="fixed top-12 left-5 md:relative md:top-0 text-6xl font-bold leading-none grotesk inline-flex w-full">Elluu P!</div>
 
-                    <div className="text-[280px] xl:text-[500px] font-bold relative leading-none inline-flex items-center justify-center mt-24 md:mt-80 lg:mt-0 pointer-events-none md:w-[400px] lg:w-[610px] mx-auto grotesk">
+                    <div className="text-[280px] md:text-[500px] lg:text-[350px] xl:text-[500px] 2xl:text-[700px] font-bold relative leading-none inline-flex mt-24 md:mt-80 lg:mt-0 pointer-events-none md:w-[400px] xl:w-[610px] mx-auto grotesk items-center justify-center ">
                         {number}
 
-                        <div className="absolute -top-16 lg:top-0 left-0 -translate-x-3/4  lg:-translate-x-1/2 inline-block">
-                            <img className="block rolling" src={elupe} alt="logo"/>
+                        <div className="absolute -top-16 md:top-10 lg:top-0 left-0 -translate-x-3/4  lg:-translate-x-1/2 inline-block">
+                            <img className="block rolling 2xl:w-[300px]" src={elupe} alt="logo"/>
                         </div>
                     </div>
                 </div>
