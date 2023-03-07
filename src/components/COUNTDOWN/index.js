@@ -36,9 +36,9 @@ export const Countdown =() =>{
 
             <div className="inline-block new-container mx-auto">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-                    <div className="text-6xl font-bold leading-none">Elluu P!</div>
+                    <div className="text-6xl font-bold leading-none grotesk">Elluu P!</div>
 
-                    <div className="text-[280px] xl:text-[500px] font-bold relative leading-none inline-flex items-center justify-center mt-24 md:mt-80 lg:mt-0 pointer-events-none md:w-[400px] lg:w-[610px] mx-auto">
+                    <div className="text-[280px] xl:text-[500px] font-bold relative leading-none inline-flex items-center justify-center mt-24 md:mt-80 lg:mt-0 pointer-events-none md:w-[400px] lg:w-[610px] mx-auto grotesk">
                         {number}
 
                         <div className="absolute -top-16 lg:top-0 left-0 -translate-x-3/4  lg:-translate-x-1/2 inline-block">

@@ -65,11 +65,11 @@ const Card = ({item})=>{
                 <div className="mt-20 space-y-4 hidden lg:block">
                     <div className="flex w-auto gap-4">
                         <div className="flex items-center text-[#898989] text-lg">Qty</div>
-                        <div onClick={removeOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                        <div onClick={removeOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF] light-hover">
                             <DarkMinus/>
                         </div>
                         <div className="flex items-center">{newQuantity || 0}</div>
-                        <div onClick={addOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                        <div onClick={addOne} className="cursor-pointer w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF] light-hover">
                             <DarkPlus/>
                         </div>
                     </div>
@@ -91,7 +91,7 @@ const Card = ({item})=>{
                             </div>
                         </div>
 
-                        <div className="w-9 h-9 soft-shadow flex items-center justify-center rounded-full bg-white cursor-pointer" onClick={()=>dispatch(deleteCartItem(id))}>
+                        <div className="w-9 h-9 soft-shadow flex items-center justify-center rounded-full bg-white cursor-pointer light-hover" onClick={()=>dispatch(deleteCartItem(id))}>
                             <DeleteIcon/>
                         </div>
                     </div>
@@ -104,11 +104,11 @@ const Card = ({item})=>{
                 <div className="mt-6 space-y-4">
                     <div className="flex items-center justify-between">
                         <div className="flex w-auto gap-4">
-                            <div onClick={removeOne} className="w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                            <div onClick={removeOne} className="light-hover w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                                 <DarkMinus/>
                             </div>
                             <div className="flex items-center">{newQuantity || 0}</div>
-                            <div onClick={addOne} className="w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
+                            <div onClick={addOne} className="light-hover w-9 h-9 rounded-full flex items-center justify-center bg-white border border-[#DFDFDF]">
                                 <DarkPlus/>
                             </div>
                         </div>
@@ -148,7 +148,7 @@ export const CartItemCard = ()=>{
                     <div className="inline-flex flex-col items-center justify-center">
                         <img src={emptyCart} alt="bag placeholder" className="w-16 h-16 mx-auto block"/>
                         <p className="mt-4 text-[#999999]">Your cart is currently empty</p>
-                        <Link to="/" className="inline-flex items-center justify-center bg-white soft-shadow h-9 px-2 rounded-full mt-4 gap-2 mx-auto">
+                        <Link to="/" className="inline-flex items-center justify-center bg-white soft-shadow h-9 px-2 rounded-full mt-4 gap-2 mx-auto light-hover grotesk">
                             <Trolley/>
                             Go to store
                         </Link>
@@ -162,11 +162,11 @@ export const CartItemCard = ()=>{
                 </div>
             )}
 
-            <div className="flex items-center mt-4 lg:hidden fixed top-1/2 right-4 translate-y-1/2">
-                <Link to="/checkout" className="bg-black inline-flex items-center gap-2 text-white h-9 px-3 rounded-full mt-4">
+            {cart.length > 0 && <div className="flex items-center mt-4 lg:hidden fixed top-1/2 right-4 translate-y-1/2">
+                <Link to="/checkout" className="bg-black inline-flex items-center gap-2 text-white h-9 px-3 rounded-full mt-4 dark-hover">
                     Complete checkout <ArrowRight/>
                 </Link>
-            </div>
+            </div>}
         </div>
     )
 }

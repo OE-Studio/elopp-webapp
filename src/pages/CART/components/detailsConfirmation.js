@@ -39,6 +39,8 @@ export const DetailsConfirmation = () =>{
             return obj
         })
 
+        // console.log(refinedCart)
+
         let payload = {
             order:refinedCart,
             userDetails
@@ -73,7 +75,7 @@ export const DetailsConfirmation = () =>{
                         <p>&#8358; {totalAmount.toLocaleString()}</p>
                     </div>
 
-                    <div className="bg-[#F9F9F9] p-6 lg:bg-white lg:p-0">
+                    <div className="bg-[#F9F9F9] p-6 lg:bg-transparent lg:p-0">
                     <p className="text-[10px] text-[#898989] lg:mt-4 font-medium">Delivery fee will be displayed on tracking page after 
                     product is printed and ready for dispatch.</p>
 

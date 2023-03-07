@@ -17,6 +17,7 @@ export const SuccessPage = ()=>{
     const [searchParams] = useSearchParams();
     const [trackingCode, setTrackingCode] = useState("")
     const [loadingDownload, setLoadingDownload] = useState(false)
+    const [loadingId, setLoadingId] = useState(false)
 
     const [showCopied, setShowCopied] = useState(false)
 
@@ -27,6 +28,7 @@ export const SuccessPage = ()=>{
         const myAbortController = new AbortController();
 
         const confirmPayment = async()=>{
+            setLoadingId(true)
             try{
                 let response = await axios.post(endpoints.confirmPayment, {reference}, { signal: myAbortController.signal })
                 let data = await response.data
@@ -35,9 +37,10 @@ export const SuccessPage = ()=>{
                     setTrackingCode(data.trackingId)
                     sessionStorage.clear()
                }
+               setLoadingId(false)
             }
             catch(err){
-
+                setLoadingId(false)
             }
         }
 
@@ -107,7 +110,7 @@ export const SuccessPage = ()=>{
                     </div>
 
                     <div onClick={copyToClipboard} className="inline-flex items-center justify-center relative">
-                        <CopyIcon/>
+                        {loadingId ? <Loader/> : <CopyIcon/>}
 
                         {showCopied && <div className="absolute -left-full -top-10 text-[#446F22] bg-[#F4F8F1] rounded-full py-1 px-2 text-sm border border-[#446F22]">
                             Copied
@@ -115,12 +118,12 @@ export const SuccessPage = ()=>{
                     </div>
                 </div>
 
-                <button disabled={loadingDownload} onClick={track} className="w-full flex items-center justify-between mt-6 px-6 h-14 bg-black text-white rounded-full disabled:bg-gray-600 disabled:cursor-not-allowed">
+                <button disabled={loadingDownload} onClick={track} className="w-full flex items-center justify-between mt-6 px-6 h-14 bg-black text-white rounded-full disabled:bg-gray-600 disabled:cursor-not-allowed dark-hover">
                     Download Receipt
                     {loadingDownload ? <Loader/> : <DownloadIcon/>}
                 </button>
 
-                <Link to="/" className="w-9 h-9 rounded-full bg-white soft-shadow absolute -top-10 -right-10 flex items-center justify-center">
+                <Link to="/" className="w-9 h-9 rounded-full bg-white soft-shadow absolute -top-10 -right-10 flex items-center justify-center light-hover">
                     <CloseIcon/>
                 </Link>
             </div>
@@ -137,7 +140,7 @@ export const SuccessPage = ()=>{
 const Invoice = ({order}) =>{
     const {userDetails} = order
     return (
-        <div className="" style={{width:"100vw", minHeight:"calc(100vh-30px)", display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center"}}>
+        <div className="" style={{width:"100vw", minHeight:"calc(100vh-30px)", display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center", fontFamily:"'Inter', sans-serif"}}>
             <div style={{width:"100%"}}>
             {/* header */}
             <div style={{display:"flex", justifyContent:"space-between", alignItems:"flex-start"}}>
@@ -229,7 +232,7 @@ const Invoice = ({order}) =>{
             <div style={{borderTop:"1px solid #898989", paddingTop:"12px", fontSize:"10px", paddingBottom:"16px", width:"100%", marginTop:"80px"}}>
                 <p style={{color:"#898989"}}>Delivery time may take 3-5 working days, depending on our delivery partners. However, you can track status of delivery after pre-order.  </p>
 
-                <p style={{color:"#282828", marginTop:"12px"}}>Reach out to us for enquiries Ogunsleye123@gmail.com Or on twitter @Leyeconnect</p>
+                <p style={{color:"#282828", marginTop:"12px", fontFamily:"'Familjen Grotesk', sans-serif"}}>Reach out to us for enquiries Ogunsleye123@gmail.com Or on twitter @Leyeconnect</p>
             </div>
         </div>
     )

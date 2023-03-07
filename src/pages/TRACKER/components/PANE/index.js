@@ -37,10 +37,12 @@ export const OrderPane = ({order}) =>{
                 {/* items */}
                 <div className="">
                     {order.order.map(o=>{
+                        // let imgSrc = o.ItemProp.availableColors.filter(color=> color.color === order.color)
+
                         return (
                             <div className="flex items-start gap-4 py-6 border-y border-[#DFDFDF] border-collapse">
                                 {/* <div className="flex items-center justify-center w-40 h-32">
-                                    <div className="w-40 h-32" style={{backgroundImage:`url(${selectedColour.img.replace(" ", "")})`, backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
+                                    <div className="w-40 h-32" style={{backgroundImage:`url(${imgSrc.img.replace(" ", "")})`, backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
                                     </div>
                                 </div> */}
 

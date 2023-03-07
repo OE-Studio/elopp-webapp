@@ -13,6 +13,8 @@ export const MainView = () =>{
                 setLoad(true)
             }, 3000)
         })
+
+        return(()=>false)
     }, [])
 
     return (
