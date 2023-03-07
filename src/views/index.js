@@ -8,11 +8,10 @@ export const MainView = () =>{
     const [load, setLoad] = useState(false)
 
     useEffect(()=>{
-        window.addEventListener("load", ()=>{
-            setTimeout(()=>{
-                setLoad(true)
-            }, 3500)
-        })
+        setLoad(false)
+        setTimeout(()=>{
+            setLoad(true)
+        }, 3500)
 
         return(()=>false)
     }, [])
