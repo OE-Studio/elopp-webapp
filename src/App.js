@@ -23,6 +23,8 @@ const App = ()=>{
                 <Route path="/success" element={<SuccessPage/>}/>
                 <Route path="/order-confirmation" element={<DetailsCheck/>}/>
               </Route>
+
+              <Route element={<LandingPage/>}></Route>
               
             </Routes>
           </BrowserRouter>

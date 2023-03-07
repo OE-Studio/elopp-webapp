@@ -194,21 +194,22 @@ const Invoice = ({order}) =>{
 
                     <tbody>
                         {order.order.map((o, index)=>{
+                            let bg =  (index + 1) % 2 === 0  ? "#FFFFFF" : "#F9FAFB"
                             return (
                                 <tr>
-                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse"}}>
+                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", backgroundColor:bg}}>
                                         {index + 1}
                                     </td>
-                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse"}}>
+                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", backgroundColor:bg}}>
                                         {o.ItemProp.name}
                                     </td>
-                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse"}}>
+                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", backgroundColor:bg}}>
                                         {o.quantity}
                                     </td>
-                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", textAlign:"right"}}>
+                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", textAlign:"right", backgroundColor:bg}}>
                                         &#8358; {o.price}.00
                                     </td>
-                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", textAlign:"right"}}>&#8358; {o.price * o.quantity}.00</td>
+                                    <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", textAlign:"right", backgroundColor:bg}}>&#8358; {o.price * o.quantity}.00</td>
                                 </tr>
                             )
                         })}

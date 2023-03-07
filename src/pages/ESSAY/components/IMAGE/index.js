@@ -12,7 +12,7 @@ export const Photo = () =>{
             </div>
 
             <p className="text-xs text-[#898989] mt-3">
-                Video credit <span onClick={openTweeter}>@StephenMuoka6</span> on twitter
+                Video credit <span className="cursor-pointer" onClick={openTweeter}>@StephenMuoka6</span> on twitter
             </p>
         </div>
     )
