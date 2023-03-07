@@ -41,7 +41,7 @@ export const Footer = () =>{
             </div>
 
             <div className="inline-flex flex-wrap justify-center space-y-7 lg:space-y-0">
-                <div className="inline-flex items-center justify-center bg-white soft-shadow py-2 px-3 rounded-full gap-2">
+                <div className="inline-flex items-center justify-center bg-white soft-shadow py-2 px-3 rounded-full gap-2 cursor-not-allowed">
                     <DownloadIcon/> Download Brand/source file
                 </div>
 
