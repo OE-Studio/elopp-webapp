@@ -5,6 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { fetchOrder } from "../../features/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { OrderPane } from "./components/PANE";
+import openBox from '../../assets/images/openbox.png'
 
 export const Tracker = () =>{
     const [searchParams] = useSearchParams();
@@ -27,6 +28,23 @@ export const Tracker = () =>{
 
     const searchOrder = async() =>{
         dispatch(fetchOrder(trackId))
+        .then(({payload})=>{
+            if(payload){
+                setTrackId("")
+            }
+        })
+        .catch(err=>{
+            return err
+        })
+    }
+
+    const ErrorFeedback = () =>{
+        return (
+            <div className="h-40 flex flex-col items-center justify-center text-center text-[#AAAAAA] gap-3">
+                <img src={openBox} className="w-16 h-auto" alt="empty box"/>
+                We could not associate any record withe code you<br className="hidden md:block"/> entered, review the code and try again
+            </div>
+        )
     }
 
     return (
@@ -37,7 +55,9 @@ export const Tracker = () =>{
             <TrackInput trackId={trackId} onChange={(e)=>setTrackId(e.target.value)} onClick={searchOrder} loading={loadingOrder}/>
 
             <div className="mt-9">
-                {currentOrder && Object.keys(currentOrder).length > 0 && <OrderPane order={currentOrder}/>}
+                {loadingOrder ? 
+                    ""
+                :(currentOrder && Object.keys(currentOrder).length > 0) ? <OrderPane order={currentOrder}/> : <ErrorFeedback/>}
             </div>
         </div>
     )

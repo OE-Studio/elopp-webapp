@@ -73,7 +73,12 @@ const cart = createSlice({
     initialState,
     reducers:{
         updateCart:(state, {payload})=>{
-            state.cart = [...state.cart, payload]
+            if(Object.keys(payload).length > 0){
+                state.cart = [...state.cart, payload] 
+            }
+            else {
+                state.cart = []
+            }
 
             sessionStorage.setItem("cart", JSON.stringify(state.cart))
         },

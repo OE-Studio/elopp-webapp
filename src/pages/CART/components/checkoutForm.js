@@ -134,7 +134,7 @@ export const CheckoutForm = () =>{
                         <PlaceholderLegendInput value={formUserDetails.phoneNumber} disabled={cart.length === 0} type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
 
                         <div className="w-full relative">
-                            <select defaultValue={formUserDetails.state} disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
+                            <select defaultValue={formUserDetails.state} disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-base md:text-sm disabled:text-[#898989]">
                                 <option value="">Select State</option>
 
                                 {states && states.length > 0 && states.map(s=>{
@@ -148,7 +148,7 @@ export const CheckoutForm = () =>{
                         </div>
 
                         <div className="w-full relative">
-                            <select defaultValue={formUserDetails.city} disabled={!formUserDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={formUserDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
+                            <select defaultValue={formUserDetails.city} disabled={!formUserDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={formUserDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-base md:text-sm disabled:text-[#898989]">
                                 <option value="">Select Region</option>
 
                                 {regions && regions.length > 0 && regions.map(r=>{

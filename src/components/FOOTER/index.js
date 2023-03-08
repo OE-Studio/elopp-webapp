@@ -41,7 +41,7 @@ export const Footer = () =>{
             </div>
 
             <div className="inline-flex flex-wrap justify-center space-y-7 lg:space-y-0 relative">
-                <div className="inline-flex items-center justify-center bg-white soft-shadow py-2 px-3 rounded-full gap-2 cursor-not-allowed">
+                <div onCLick={()=>window.open("https://drive.google.com/drive/folders/1NIGyAi7Glk0JTBYtR3Ua0RAoCViT7Q9l?usp=share_link", "_blank")} className="inline-flex items-center justify-center bg-white soft-shadow py-2 px-3 rounded-full gap-2 cursor-pointer">
                     <DownloadIcon/> Download Brand/source file
                 </div>
 

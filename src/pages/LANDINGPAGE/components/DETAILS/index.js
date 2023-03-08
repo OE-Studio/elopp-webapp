@@ -118,7 +118,7 @@ export const ItemDetails = () =>{
                             <td className="flex items-center justify-end py-4">
                                 <div className="inline-flex items-center justify-end gap-2 lg:gap-4 text-sm lg:text-base">
                                     {currentItem.availableSize.map(s=>{
-                                        return <div className={`light-hover px-2 lg:px-4 h-8 lg:h-9 rounded-full flex items-center justify-center border border-[#DFDFDF] cursor-pointer ${s === size ? "text-white bg-[#333333]" : "bg-white"}`} onClick={()=>setSize(s)}>{s}</div>
+                                        return <div className={`px-2 lg:px-4 h-8 lg:h-9 rounded-full flex items-center justify-center border border-[#DFDFDF] cursor-pointer ${s === size ? "text-white bg-[#333333]" : "bg-white"}`} onClick={()=>setSize(s)}>{s}</div>
                                     })}
                                 </div>
                             </td>

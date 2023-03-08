@@ -9,6 +9,9 @@ import { CloseIcon } from "../../assets/icons/close";
 import { Loader } from "../../assets/icons/loader";
 import { Invoice } from "../../components/INVOICE";
 import { Link } from "react-router-dom";
+import { WhiteLoader } from "../../assets/icons/whiteLoader";
+import { updateCart } from "../../features/cartSlice";
+import { useDispatch } from "react-redux";
 
 
 export const SuccessPage = ()=>{
@@ -20,6 +23,8 @@ export const SuccessPage = ()=>{
     const [showCopied, setShowCopied] = useState(false)
 
     const [order, setOrder] = useState({})
+
+    const dispatch = useDispatch()
 
     useEffect(()=>{
         let reference = searchParams.get('reference')
@@ -33,6 +38,7 @@ export const SuccessPage = ()=>{
 
                if(data.success) {
                     setTrackingCode(data.trackingId)
+                    dispatch(updateCart())
                     sessionStorage.clear()
                }
                setLoadingId(false)
@@ -125,7 +131,7 @@ export const SuccessPage = ()=>{
 
                 <button disabled={loadingDownload} onClick={track} className="w-full flex items-center justify-between mt-6 px-6 h-14 bg-black text-white rounded-full disabled:bg-gray-600 disabled:cursor-not-allowed dark-hover">
                     Download Receipt
-                    {loadingDownload ? <Loader/> : <DownloadIcon/>}
+                    {loadingDownload ? <WhiteLoader/> : <DownloadIcon/>}
                 </button>
 
                 <Link to="/" className="w-9 h-9 rounded-full bg-white soft-shadow absolute -top-10 -right-10 flex items-center justify-center light-hover">
