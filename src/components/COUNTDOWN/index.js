@@ -36,7 +36,7 @@ export const Countdown =() =>{
 
             <div className="inline-block new-container mx-auto">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
-                    <div className="fixed top-12 left-5 md:relative md:top-0 text-6xl font-bold leading-none grotesk inline-flex w-full">Elluu P!</div>
+                    <div className="fixed top-12 left-5 md:relative md:top-0 md:left-0 text-6xl font-bold leading-none grotesk inline-flex w-full">Elluu P!</div>
 
                     <div className="text-[280px] md:text-[500px] lg:text-[350px] xl:text-[500px] 2xl:text-[700px] font-bold relative leading-none inline-flex mt-24 md:mt-80 lg:mt-0 pointer-events-none md:w-[400px] xl:w-[610px] mx-auto grotesk items-center lg:items-end justify-center ">
                         {number}
@@ -48,8 +48,8 @@ export const Countdown =() =>{
                 </div>
 
                 <div className="w-full flex items-center gap-4 mt-9">
-                    <div>loading</div>
-                    <div className="bg-[#F4F4F4] h-px w-full relative overflow-hidden">
+                    <div className="font-bold">loading</div>
+                    <div className="bg-[#F4F4F4] h-0.5 w-full relative overflow-hidden">
                         <div className="absolute  bg-black h-full w-full top-0 loading-bar"></div>
                     </div>
                 </div>

@@ -3,9 +3,13 @@ import { Outlet } from "react-router";
 import NavBar from "../components/NAVBAR";
 import { Footer } from "../components/FOOTER";
 import { Countdown } from "../components/COUNTDOWN";
+import { useLocation } from "react-router";
 
 export const MainView = () =>{
     const [load, setLoad] = useState(false)
+    const [showFooter, setShowFooter] = useState(true)
+
+    const location = useLocation()
 
     useEffect(()=>{
         setLoad(false)
@@ -16,6 +20,20 @@ export const MainView = () =>{
         return(()=>false)
     }, [])
 
+    useEffect(()=>{
+        let trimmed = location.pathname.replace("/", "")
+        if(trimmed === "cart" || trimmed === "checkout") {
+            setShowFooter(false)
+        }
+        else {
+            setShowFooter(true)
+        }
+
+        window.scrollTo({
+            top:0
+        })
+    }, [location.pathname])
+
     return (
         <div className="">
             {load ? <div className="lg:pb-20">
@@ -25,7 +43,7 @@ export const MainView = () =>{
                     <Outlet/>
                 </div>
 
-                <Footer/>
+                {showFooter && <Footer/>}
             </div> : (
                 <Countdown/>
             )}

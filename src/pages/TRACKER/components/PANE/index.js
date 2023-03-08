@@ -5,11 +5,28 @@ import {SmileyIcon} from '../../../../assets/icons/smiley'
 import { DownloadIcon } from '../../../../assets/icons/download'
 import { trackstatus } from "../../../../utils";
 import { MailIcon } from "../../../../assets/icons/mail";
-// import { DownloadIcon } from "../../../../assets/icons/download";
+import { Invoice } from "../../../../components/INVOICE";
 
 
 export const OrderPane = ({order}) =>{
     const {userDetails} = order
+
+    const track = () =>{
+        let elem = document.querySelector('.print')
+        var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+        WinPrint.document.write('<html><head><title></title>');
+        WinPrint.document.write('</style>');
+        WinPrint.document.write('</head>');
+        WinPrint.document.write('<body>');
+        WinPrint.document.write("<center>header</center>");
+        WinPrint.document.write(elem.innerHTML);
+        WinPrint.document.write('</body>');
+        WinPrint.document.write('</html>');
+        WinPrint.document.close();
+        WinPrint.focus();
+        WinPrint.print();
+    }
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 xl:gap-14">
             {/* user details */}
@@ -27,7 +44,7 @@ export const OrderPane = ({order}) =>{
                     </div>
                 </div>
 
-                <button className="w-full flex items-center justify-between mt-4 lg:mt-6 px-6 h-14 bg-black text-white rounded-full disabled:bg-gray-600 disabled:cursor-not-allowed">
+                <button onClick={track} className="w-full flex items-center justify-between mt-4 lg:mt-6 px-6 h-14 bg-black text-white rounded-full disabled:bg-gray-600 disabled:cursor-not-allowed">
                     Download Receipt
                     <DownloadIcon/>
                 </button>
@@ -37,26 +54,26 @@ export const OrderPane = ({order}) =>{
                 {/* items */}
                 <div className="">
                     {order.order.map(o=>{
-                        // let imgSrc = o.ItemProp.availableColors.filter(color=> color.color === order.color)
+                        let imgSrc = o.ItemProp.availableColors.filter(color=> color.color === o.color)
 
                         return (
                             <div className="flex items-start gap-4 py-6 border-y border-[#DFDFDF] border-collapse">
-                                {/* <div className="flex items-center justify-center w-40 h-32">
-                                    <div className="w-40 h-32" style={{backgroundImage:`url(${imgSrc.img.replace(" ", "")})`, backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
+                                <div className="flex items-center justify-center w-40 h-32">
+                                    <div className="w-40 h-32" style={{backgroundImage:`url(${imgSrc[0].img.replace(" ", "")})`, backgroundSize:"cover", backgroundRepeat:"no-repeat", backgroundPosition:"center"}}>
                                     </div>
-                                </div> */}
+                                </div>
 
                                 <div>
-                                    <p className="text-lg">{o.ItemProp.name}</p>
+                                    <p className="text-sm xl:text-lg">{o.ItemProp.name}</p>
                                     <div className="mt-3">
-                                        <div className="text-[#898989] text-sm">{o.ItemProp.description}</div>
+                                        <div className="text-[#898989] text-xs xl:text-sm">{o.ItemProp.description}</div>
 
-                                        <div className="flex items-center gap-8 text-sm text-[#898989] mt-3">
+                                        <div className="flex items-center gap-8 text-xs xl:text-sm text-[#898989] mt-3">
                                             <p>Qty: {o.quantity}</p>
                                             <p>Size: {o.quantity || "nill"}</p>
                                         </div>
 
-                                        <div className="mt-3">&#8358; {o.price}</div>
+                                        <div className="mt-3 text-sm xl:text-base">&#8358; {o.price}</div>
                                     </div>
                                 </div>
                             </div>
@@ -79,10 +96,10 @@ export const OrderPane = ({order}) =>{
 
                                 {/* Right side */}
                                 <div className="pb-7">
-                                    <p>{s.step}</p>
-                                    <p className="text-[#898989] text-sm mt-1">{s.detail}</p>
+                                    <p className={s.status !== "completed" && "text-[#C0C0C0]"}>{s.step}</p>
+                                    <p className={`${s.status === "completed" ? "text-[#898989]" : "text-[#C0C0C0]"}  text-sm mt-1`}>{s.detail}</p>
                                     
-                                    <div className="text-[#898989] text-sm mt-6 flex items-center gap-2 text-[8px]">
+                                    <div className={`${s.status === "completed" ? "text-[#898989]" : "text-[#C0C0C0]"}  text-sm mt-6 flex items-center gap-2 text-[8px]`}>
                                         <div className="rounded-full border border-[#AAAAAA] px-2 py-0.5">{s.status}</div>
                                         {/* <div>{s.date ? s.date : s.status}</div> */}
                                     </div>
@@ -91,6 +108,12 @@ export const OrderPane = ({order}) =>{
                         )
                     })}
                 </div>
+            </div>
+
+            <div className="w-0 overflow-hidden h-0">
+               {order && Object.keys(order).length > 0 ? <div className="w-screen min-h-screen flex items-center pt-12 print">
+                    <Invoice order={order}/>
+                </div> : ""}
             </div>
         </div>
     )

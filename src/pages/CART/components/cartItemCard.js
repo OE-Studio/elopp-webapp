@@ -162,8 +162,8 @@ export const CartItemCard = ()=>{
                 </div>
             )}
 
-            {cart.length > 0 && <div className="flex items-center mt-4 lg:hidden fixed top-1/2 right-4 translate-y-1/2">
-                <Link to="/checkout" className="bg-black inline-flex items-center gap-2 text-white h-9 px-3 rounded-full mt-4 dark-hover">
+            {<div className="flex items-center mt-4 lg:hidden fixed bottom-16 right-0 px-5 w-full">
+                <Link to="/checkout" className="bg-black flex items-center justify-between text-white h-14 px-3 rounded-full dark-hover w-full z-[4000]">
                     Complete checkout <ArrowRight/>
                 </Link>
             </div>}

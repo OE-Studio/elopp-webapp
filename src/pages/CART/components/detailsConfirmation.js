@@ -8,6 +8,7 @@ import {LocationIcon} from '../../../assets/icons/location'
 import {SmileyIcon} from '../../../assets/icons/smiley'
 import { submitOrder } from "../../../features/cartSlice";
 import { Loader } from "../../../assets/icons/loader";
+import { Link } from "react-router-dom";
 
 export const DetailsConfirmation = () =>{
     const {cart, userDetails, loadingSubmitOrder} = useSelector(state=>state.cart)
@@ -58,15 +59,30 @@ export const DetailsConfirmation = () =>{
                     <div className="space-y-2 bg-white p-4">
                         <div className="flex items-center justify-between">
                             <p className="text-xs">User information</p>
-                            <PencilIcon/>
+
+                            <Link to="/checkout" className="w-4 h-4 flex justify-end items-center">
+                                <PencilIcon/>
+                            </Link>
                         </div>
                         <hr className="my-3"/>
 
                         <div className="space-y-3 text-xs text-[#282828] font-medium">
-                            <div className="flex items-center justify-start gap-2"><SmileyIcon/> {userDetails.name}</div>
-                            <div className="flex items-center justify-start gap-2"><MailIcon/>{userDetails.email}</div>
-                            <div className="flex items-center justify-start gap-2"><CallIcon/>{userDetails.phoneNumber}</div>
-                            <div className="flex items-center justify-start gap-2"><LocationIcon/>{userDetails.address}</div>
+                            <div className="flex items-center justify-start gap-2">
+                                <div className="w-4 h-4 flex items-center justify-center"><SmileyIcon/></div> 
+                                {userDetails.name}
+                            </div>
+                            <div className="flex items-center justify-start gap-2">
+                                <div className="w-4 h-4 flex items-center justify-center"><MailIcon/></div>
+                                {userDetails.email}
+                            </div>
+                            <div className="flex items-center justify-start gap-2">
+                                <div className="w-4 h-4 flex items-center justify-center"><CallIcon/></div>
+                                {userDetails.phoneNumber}
+                            </div>
+                            <div className="flex items-center justify-start gap-2">
+                                <div className="w-4 h-4 flex items-center justify-center"><LocationIcon/></div>
+                                {userDetails.address}
+                            </div>
                         </div>
                     </div>
 

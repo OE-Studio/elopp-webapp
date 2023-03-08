@@ -17,13 +17,17 @@ const Popup = ({closeHandler,children}) =>{
     
     return (
         <div className="fixed h-screen w-screen p-5 bg-[#3e3e3e] bg-opacity-30 backdrop-blur-lg z-[3000] top-0 left-0">
-            <div className="w-full h-full overflow-y-scroll flex items-end pb-14 md:pb-20 justify-center md:justify-end relative">
-                {children}
+            <div className="w-full h-full overflow-y-scroll flex items-center justify-center relative">
+                <div className="relative w-full h-auto">
+                    {children}
+
+                    <div onClick={closeHandler} className="w-11 h-11 bg-black soft-shadow rounded-full flex items-center justify-center absolute -top-14 right-0 dark-hover">
+                        <WhiteClose/>
+                    </div>
+                </div>
             </div>
 
-            <div onClick={closeHandler} className="w-11 h-11 bg-black soft-shadow rounded-full flex items-center justify-center absolute bottom-4 right-4 md:bottom-12 md:right-12">
-                <WhiteClose/>
-            </div>
+            
         </div>
     )
 }
@@ -59,13 +63,13 @@ export const LandingPage = () =>{
                 <h1 className="text-3xl lg:text-6xl font-semibold grotesk text-left md:text-center">
                     Elluu P! Merchandise Centre
                 </h1>
-                <p className="mt-4 xl:mt-6 w-full lg:w-[600px] grotesk text-left md:text-center mx-auto block">
-                    The Unstoppable Tide: How the People's Collective Effort Towards a New Nigeria Found Its Voice in the Chant of Voters' Count, Led by <span onClick={openTweeter}>@StephenMuoka6</span>, and Carries the Hopes and Dreams of Many.
+                <p className="mt-4 xl:mt-6 w-full lg:w-[600px] xl:w-3/4 2xl:w-1/2 grotesk text-left md:text-center mx-auto block">
+                    The Unstoppable Tide: How the People's Collective Effort Towards a New Nigeria Found Its Voice in the Chant of Voters' Count, Led by <span className="cursor-pointer" onClick={openTweeter}>@StephenMuoka6</span>, and Carries the Hopes and Dreams of Many.
                 </p>
             </div>
 
-            <div className="flex items-center justify-center mt-5 2xl:mt-10">
-                <Link to="/article" className=" inline-flex items-center justify-center border border-[#DFDFDF] rounded-full mx-auto px-4 py-3 gap-3 light-hover">
+            <div className="flex items-center justify-start lg:justify-center mt-5 2xl:mt-10">
+                <Link to="/article" className=" inline-flex items-center justify-center border border-[#DFDFDF] rounded-full px-4 py-3 gap-3 light-hover">
                     Read our why
                     <Arrow45/>
                 </Link>

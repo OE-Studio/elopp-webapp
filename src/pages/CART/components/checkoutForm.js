@@ -40,6 +40,14 @@ export const CheckoutForm = () =>{
         setTotalAmount(total)
     }, [cart])
 
+    useEffect(()=>{
+        let details = JSON.parse(sessionStorage.getItem('userDetails'))
+
+        if(Object.keys(details).length > 0) {
+            setUserDetails(details)
+        }
+    }, [])
+
     const fetchStates = async() =>{
         setLoadingState(true)
         try{
@@ -100,23 +108,26 @@ export const CheckoutForm = () =>{
             else return userDetails[detail] === ""
         })
 
-        if(cheker.length > 0) {
+        if(cheker.length > 0 || cart.length === 0) {
             setDisableButton(true)
         }
         else setDisableButton(false)
-    }, [userDetails, dispatch])
+    }, [userDetails, dispatch, cart.length])
 
     const nextStep = () =>{
+        window.scrollTo({
+            top:0
+        })
         
         dispatch(changeCurrentStep("details"))
     }
 
     return (
-        <div>
+        <div className="lg:sticky lg:top-32 lg:left-0 pt-0 lg:pt-0">
             <form>
-                <div>Complete checkout</div>
+                <div className="text-3xl font-bold lg:text-sm lg:font-medium">Complete checkout</div>
 
-                <div className="bg-[#F9F9F9] p-6 mt-1">
+                <div className="bg-[#F9F9F9] p-6 mt-2 lg:mt-1">
                     <div className="space-y-2 bg-white p-4">
                         <p className="text-xs text-[#898989]">Subtotal</p>
                         <p className="text-2xl">&#8358; {totalAmount.toLocaleString()}</p>
@@ -125,12 +136,12 @@ export const CheckoutForm = () =>{
 
                     <p className="text-xs text-[#898989] mt-4">User Information</p>
                     <div className="divide-y divide-[#DFDFDF] border-b border-b-[#DFDFDF]">
-                        <PlaceholderLegendInput onChange={userDetailsHandler} name="name" placeholder="Name"/>
-                        <PlaceholderLegendInput onChange={userDetailsHandler} name="email" placeholder="Email"/>
-                        <PlaceholderLegendInput type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
+                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="name" placeholder="Name"/>
+                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="email" placeholder="Email"/>
+                        <PlaceholderLegendInput disabled={cart.length === 0} type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
 
                         <div className="w-full relative">
-                            <select name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs">
+                            <select disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
                                 <option value="">Select State</option>
 
                                 {states && states.length > 0 && states.map(s=>{
@@ -144,7 +155,7 @@ export const CheckoutForm = () =>{
                         </div>
 
                         <div className="w-full relative">
-                            <select disabled={!userDetails.state} name="city" onChange={userDetailsHandler} value={userDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#CECECE]">
+                            <select disabled={!userDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={userDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
                                 <option value="">Select Region</option>
 
                                 {regions && regions.length > 0 && regions.map(r=>{
@@ -157,8 +168,8 @@ export const CheckoutForm = () =>{
                             </div>
                         </div>
 
-                        <PlaceholderLegendInput onChange={userDetailsHandler} name="address" placeholder="Address"/>
-                        <PlaceholderLegendInput onChange={userDetailsHandler} placeholder="Landmark" name="landmark"/>
+                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="address" placeholder="Address"/>
+                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} placeholder="Landmark" name="landmark"/>
                     </div>
 
                     <div className="flex justify-end">
@@ -166,7 +177,7 @@ export const CheckoutForm = () =>{
                             Continue <ArrowRight/>
                         </button>
 
-                        <button onClick={()=>navigate("/order-confirmation")} disabled={disableButton}  className="bg-black inline-flex items-center justify-between text-white h-9 px-3 rounded-full mt-4 w-full lg:hidden disabled:bg-[#878585] disabled:cursor-not-allowed">
+                        <button onClick={()=>navigate("/order-confirmation")} disabled={disableButton}  className="bg-black inline-flex items-center justify-between text-white h-14 px-3 rounded-full mt-4 w-full lg:hidden disabled:bg-[#878585] disabled:cursor-not-allowed">
                             Continue <ArrowRight/>
                         </button>
                     </div>

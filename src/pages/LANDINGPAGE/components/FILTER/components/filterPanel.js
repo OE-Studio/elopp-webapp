@@ -16,9 +16,9 @@ export const FilterPanel = () =>{
     return (
         <div className="w-full">
             <div className="w-full bg-[#F9F9F9] p-6">
-                <ToggleComp checked={filterList.length === 10} label="All items"/>
+                <div>Filter Merch</div>
 
-                <hr/>
+                <hr className="my-4"/>
 
                 <ToggleComp checked={filterList.find(item=>item === 'T-shirt')} label="T-shirt" onChange={toggleFilter}/>
                 <ToggleComp checked={filterList.find(item=>item === 'Notepad')} label="Notepad" onChange={toggleFilter}/>

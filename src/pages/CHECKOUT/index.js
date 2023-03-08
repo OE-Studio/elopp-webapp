@@ -3,7 +3,7 @@ import {CheckoutForm} from '../CART/components/checkoutForm'
 
 export const Checkout = () =>{
     return (
-        <div>
+        <div className="pt-12">
             <CheckoutForm/>
         </div>
     )
