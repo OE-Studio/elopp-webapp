@@ -32,7 +32,7 @@ export const Countdown =() =>{
     }, [])
 
     return (
-        <div className="min-h-screen w-full flex items-end justify-center overflow-x-hidden pb-8">
+        <div className="min-h-screen w-full flex items-end justify-center overflow-x-hidden pb-14 lg:pb-8">
 
             <div className="inline-block new-container mx-auto">
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between">
