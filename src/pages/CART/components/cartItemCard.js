@@ -35,8 +35,6 @@ const Card = ({item})=>{
             dispatch(updateSingleItem({id,quantity:prev - 1}))
             return prev - 1
         })
-
-        
     }
 
     const updateSize = (e) =>{

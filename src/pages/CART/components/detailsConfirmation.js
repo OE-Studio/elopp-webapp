@@ -9,6 +9,7 @@ import {SmileyIcon} from '../../../assets/icons/smiley'
 import { submitOrder } from "../../../features/cartSlice";
 import { Loader } from "../../../assets/icons/loader";
 import { Link } from "react-router-dom";
+import { changeCurrentStep } from "../../../features/cartSlice";
 
 export const DetailsConfirmation = () =>{
     const {cart, userDetails, loadingSubmitOrder} = useSelector(state=>state.cart)
@@ -50,6 +51,10 @@ export const DetailsConfirmation = () =>{
         dispatch(submitOrder(payload))
     }
 
+    const returnToForm = () =>{
+        dispatch(changeCurrentStep('checkout'))
+    }
+
     return (
         <div className="pt-12 lg:pt-0">
             {/* <form className=""> */}
@@ -60,9 +65,13 @@ export const DetailsConfirmation = () =>{
                         <div className="flex items-center justify-between">
                             <p className="text-xs">User information</p>
 
-                            <Link to="/checkout" className="w-4 h-4 flex justify-end items-center">
+                            <Link to="/checkout" className="w-4 h-4 flex justify-end items-center lg:hidden">
                                 <PencilIcon/>
                             </Link>
+
+                            <div onClick={returnToForm} className="w-4 h-4 justify-end items-center hidden lg:flex">
+                                <PencilIcon/>
+                            </div>
                         </div>
                         <hr className="my-3"/>
 

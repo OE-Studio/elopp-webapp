@@ -12,17 +12,9 @@ import { useNavigate } from "react-router-dom";
 
 export const CheckoutForm = () =>{
     const navigate = useNavigate()
-    const {cart} = useSelector(state=>state.cart)
+    const {cart, userDetails} = useSelector(state=>state.cart)
     const [totalAmount, setTotalAmount] = useState(0)
-    const [userDetails, setUserDetails] = useState({
-        name:"",
-        email:"",
-        phoneNumber:"",
-        state:"",
-        city:"",
-        address:"",
-        landmark:""
-    })
+    const [formUserDetails, setFormUserDetails] = useState(userDetails)
     const [states, setStates] = useState([])
     const [regions, setRegions] = useState([])
 
@@ -39,14 +31,6 @@ export const CheckoutForm = () =>{
         })
         setTotalAmount(total)
     }, [cart])
-
-    useEffect(()=>{
-        let details = JSON.parse(sessionStorage.getItem('userDetails'))
-
-        if(Object.keys(details).length > 0) {
-            setUserDetails(details)
-        }
-    }, [])
 
     const fetchStates = async() =>{
         setLoadingState(true)
@@ -86,7 +70,7 @@ export const CheckoutForm = () =>{
     },[])
 
     const userDetailsHandler = (e) =>{
-        setUserDetails(prev=>{
+        setFormUserDetails(prev=>{
             return ({...prev, [e.target.name]:e.target.value})
         })
 
@@ -98,21 +82,21 @@ export const CheckoutForm = () =>{
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(updateUserDetails({
-            ...userDetails, landmark:userDetails.landmark || "empty"
+            ...formUserDetails, landmark:formUserDetails.landmark || "empty"
         }))
 
-        let cheker = Object.keys(userDetails).filter(detail=>{
+        let cheker = Object.keys(formUserDetails).filter(detail=>{
             if(detail === "landmark") {
                 return false
             }
-            else return userDetails[detail] === ""
+            else return formUserDetails[detail] === ""
         })
 
         if(cheker.length > 0 || cart.length === 0) {
             setDisableButton(true)
         }
         else setDisableButton(false)
-    }, [userDetails, dispatch, cart.length])
+    }, [formUserDetails, dispatch, cart.length])
 
     const nextStep = () =>{
         window.scrollTo({
@@ -155,7 +139,7 @@ export const CheckoutForm = () =>{
                         </div>
 
                         <div className="w-full relative">
-                            <select disabled={!userDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={userDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
+                            <select disabled={!formUserDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={formUserDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
                                 <option value="">Select Region</option>
 
                                 {regions && regions.length > 0 && regions.map(r=>{

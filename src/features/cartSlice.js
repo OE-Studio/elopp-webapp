@@ -6,7 +6,8 @@ const initialState = {
     cart:JSON.parse(sessionStorage.getItem("cart") || "[]"),
     currentItem:{},
     showDetails:false,
-    userDetails:JSON.parse(sessionStorage.getItem('userDetails') || "{}"),
+    userDetails:JSON.parse(sessionStorage.getItem('userDetails') || '{"name":"", "email":"","phoneNumber":"", "state":"","city":"","address":"", "landmark":""}'
+    ),
     currentStep:"checkout",
     loadingItems:false,
     allItems:[],
@@ -98,7 +99,7 @@ const cart = createSlice({
         },
         updateSingleItem:(state, {payload})=>{
             let mapped = state.cart.map(c=>{
-                if(c._id === payload._id) {
+                if(c.id === payload.id) {
                     c={...c, ...payload}
                 }
                 return c
