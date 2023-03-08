@@ -102,7 +102,7 @@ export const LandingPage = () =>{
 
                                 let truthy = cart.find(c=>c.id === i.id)
 
-                                return <ItemCard name={i.name} availableColours={i.availableColors} price={i.price} onList={truthy} onClick={()=>handleCurrentItem(i)}/>
+                                return <ItemCard key={i.id} name={i.name} availableColours={i.availableColors} price={i.price} onList={truthy} onClick={()=>handleCurrentItem(i)}/>
                             })}
                         </div>
                     )

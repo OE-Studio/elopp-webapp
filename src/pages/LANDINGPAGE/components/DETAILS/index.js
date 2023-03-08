@@ -84,7 +84,7 @@ export const ItemDetails = () =>{
             <div className="grid grid-cols-4 gap-5 mt-7">
                 {currentItem.availableColors.map(c=>{
                     return (
-                        <div className=" flex items-center justify-center" onClick={()=>setAvailableColour(c)}>
+                        <div key={c.color} className=" flex items-center justify-center" onClick={()=>setAvailableColour(c)}>
                             <img src={c.img.replace(" ", "")} className="w-full h-auto" alt="item colour"/>
                         </div>
                     )
@@ -118,7 +118,7 @@ export const ItemDetails = () =>{
                             <td className="flex items-center justify-end py-4">
                                 <div className="inline-flex items-center justify-end gap-2 lg:gap-4 text-sm lg:text-base">
                                     {currentItem.availableSize.map(s=>{
-                                        return <div className={`px-2 lg:px-4 h-8 lg:h-9 rounded-full flex items-center justify-center border border-[#DFDFDF] cursor-pointer ${s === size ? "text-white bg-[#333333]" : "bg-white"}`} onClick={()=>setSize(s)}>{s}</div>
+                                        return <div key={s} className={`px-2 lg:px-4 h-8 lg:h-9 rounded-full flex items-center justify-center border border-[#DFDFDF] cursor-pointer ${s === size ? "text-white bg-[#333333]" : "bg-white"}`} onClick={()=>setSize(s)}>{s}</div>
                                     })}
                                 </div>
                             </td>

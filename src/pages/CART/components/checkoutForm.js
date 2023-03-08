@@ -138,7 +138,7 @@ export const CheckoutForm = () =>{
                                 <option value="">Select State</option>
 
                                 {states && states.length > 0 && states.map(s=>{
-                                    return <option value={s.alias}>{s.name}</option>
+                                    return <option key={s.alias} value={s.alias}>{s.name}</option>
                                 })}
                             </select>
 
@@ -152,7 +152,7 @@ export const CheckoutForm = () =>{
                                 <option value="">Select Region</option>
 
                                 {regions && regions.length > 0 && regions.map(r=>{
-                                    return <option value={r.name}>{r.name}</option>
+                                    return <option key={r.name} value={r.name}>{r.name}</option>
                                 })}
                             </select>
 

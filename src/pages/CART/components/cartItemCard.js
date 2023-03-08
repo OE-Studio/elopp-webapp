@@ -115,7 +115,7 @@ const Card = ({item})=>{
                         {item.availableSize.length > 0 && <div className="inline-flex relative">
                             <select onChange={updateSize} value={newSize} className="size-select border border-[#DFDFDF] rounded-full h-9 px-3 pr-7">
                                 {item.availableSize.map(s=>{
-                                    return <option value={s}>{s}</option>
+                                    return <option key={s} value={s}>{s}</option>
                                 })}
                             </select>
 

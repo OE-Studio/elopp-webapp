@@ -85,7 +85,7 @@ export const OrderPane = ({order}) =>{
                 <div className="w-full space-y-1">
                     {trackstatus.map((s)=>{
                         return (
-                            <div className="gap-3 flex">
+                            <div key={s.step} className="gap-3 flex">
                                 {/* green stuff */}
                                 <div className="felx flex-col items-center justify-between">
                                     <div className={`w-5 h-5 rounded-full flex items-center justify-center border ${s.status === 'completed' ? 'border-[#74A54D]' : 'border-[#DFDFDF]'}`}>

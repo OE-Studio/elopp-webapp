@@ -62,7 +62,7 @@ export const Invoice = ({order}) =>{
                         {order.order.map((o, index)=>{
                             let bg =  (index + 1) % 2 === 0  ? "#FFFFFF" : "#F9FAFB"
                             return (
-                                <tr>
+                                <tr key={index}>
                                     <td style={{color:"#475467", padding:"8px 8px", borderBottom:"1px solid #EAECF0", borderCollapse:"collapse", backgroundColor:bg}}>
                                         {index + 1}
                                     </td>
