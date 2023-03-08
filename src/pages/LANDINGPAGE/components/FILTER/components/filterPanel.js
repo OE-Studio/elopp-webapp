@@ -8,7 +8,6 @@ export const FilterPanel = () =>{
     let {filterList} = useSelector(state=>state.cart)
 
     const toggleFilter = (value, label) =>{
-        // console.log(label)
         dispatch(updateFilterList(label))
     }
 

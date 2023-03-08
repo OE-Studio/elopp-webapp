@@ -20,8 +20,6 @@ const Card = ({item})=>{
 
     const dispatch = useDispatch()
 
-    console.log(item)
-
     const addOne = () =>{
         setNewQuantity(prev=>{
             dispatch(updateSingleItem({id,quantity:prev + 1}))

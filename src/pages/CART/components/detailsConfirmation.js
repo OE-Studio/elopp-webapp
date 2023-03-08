@@ -41,8 +41,6 @@ export const DetailsConfirmation = () =>{
             return obj
         })
 
-        // console.log(refinedCart)
-
         let payload = {
             order:refinedCart,
             userDetails

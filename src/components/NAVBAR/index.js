@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const NavBar = () =>{
 
     const {cart}  = useSelector(state=>state.cart)
-    console.log(cart)
 
     return (
         <div className=" bg-[#F9F9F9] sticky top-0 left-0 z-[1000]">

@@ -64,7 +64,7 @@ export const SuccessPage = ()=>{
             }, 2000)
         })
         .catch((err)=>{
-            console.log(err)
+            
         })   
     }
 
