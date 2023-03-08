@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { WhiteLoader } from "../../assets/icons/whiteLoader";
 import { updateCart } from "../../features/cartSlice";
 import { useDispatch } from "react-redux";
+import useAnalyticsEventTracker from "../../useAnalyticsEventTracker";
 
 
 export const SuccessPage = ()=>{
@@ -25,6 +26,8 @@ export const SuccessPage = ()=>{
     const [order, setOrder] = useState({})
 
     const dispatch = useDispatch()
+
+    const gaEventTracker = useAnalyticsEventTracker('Payment confirmation');
 
     useEffect(()=>{
         let reference = searchParams.get('reference')
@@ -40,6 +43,7 @@ export const SuccessPage = ()=>{
                     setTrackingCode(data.trackingId)
                     dispatch(updateCart())
                     sessionStorage.clear()
+                    gaEventTracker(`Payment ${data.trackingId} confirmed`)
                }
                setLoadingId(false)
             }
@@ -64,7 +68,7 @@ export const SuccessPage = ()=>{
             }, 2000)
         })
         .catch((err)=>{
-            
+
         })   
     }
 

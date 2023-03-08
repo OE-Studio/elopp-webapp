@@ -13,6 +13,7 @@ import { WhiteClose } from "../../assets/icons/whiteClose";
 import { Link } from "react-router-dom";
 import { Arrow45 } from "../../assets/icons/arrow45";
 import { updateFilterList } from "../../features/cartSlice";
+import useAnalyticsEventTracker from "../../useAnalyticsEventTracker";
 
 const Popup = ({closeHandler,children}) =>{
     
@@ -32,6 +33,8 @@ const Popup = ({closeHandler,children}) =>{
 }
 
 export const LandingPage = () =>{
+    const gaEventTracker = useAnalyticsEventTracker('Visiting');
+
     const {cart, showDetails, loadingItems, allItems, filterList} = useSelector(state=>state.cart)
 
     const [showFilter, setShowFilter] = useState(false)
@@ -39,12 +42,16 @@ export const LandingPage = () =>{
 
     const dispatch = useDispatch()
 
+
     const handleCurrentItem=(item)=>{
         dispatch(changeCurrentItem(item))
     }
 
     useEffect(()=>{
         dispatch(fetchAllIItems())
+        gaEventTracker('call')
+
+        // eslint-disable-next-line
     }, [dispatch])
 
     useEffect(()=>{
