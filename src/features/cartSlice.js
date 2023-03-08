@@ -121,14 +121,20 @@ const cart = createSlice({
         },
         updateFilterList:(state, {payload})=>{
 
-            if(state.filterList.find(arr=>arr === payload)){
-                let filtered = state.filterList.filter(item=>{
-                    return item !== payload
-                })
-                state.filterList = filtered
+            if(payload === "all") {
+                let all = ["T-shirt","Notepad","Hoodie","Wrist band","Stickers","Tote bag","Sport bottle","Mug","Cap","Phone case"]
+                state.filterList = [...state.filterList, ...all]
             }
             else {
-                state.filterList = [...state.filterList, payload]
+                if(state.filterList.find(arr=>arr === payload)){
+                    let filtered = state.filterList.filter(item=>{
+                        return item !== payload
+                    })
+                    state.filterList = filtered
+                }
+                else {
+                    state.filterList = [...state.filterList, payload]
+                }
             }
         }
     },

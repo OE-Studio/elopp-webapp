@@ -25,7 +25,7 @@ export const ItemCard = ({name, availableColours, price, onClick, onList}) =>{
                 </div>
             </div>
 
-            <div className="bg-[#F9F9F9] p-6">
+            <div className="bg-[#F9F9F9] p-6 md:h-44 lg:h-auto flex flex-col justify-between">
                 <p className="grotesk">{name}</p>
                 <div className="flex items-center justify-between mt-6">
                     <p className="inline-block py-2 px-3 soft-shadow rounded-full text-lg bg-white grotesk">&#8358; {price.toLocaleString()}</p>

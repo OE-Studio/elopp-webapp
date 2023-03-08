@@ -10,6 +10,7 @@ import openBox from '../../assets/images/openbox.png'
 export const Tracker = () =>{
     const [searchParams] = useSearchParams();
     const [trackId, setTrackId] = useState("")
+    const [showError, setShowError] = useState(false)
 
     const {currentOrder, loadingOrder} = useSelector(state=>state.cart)
 
@@ -31,9 +32,14 @@ export const Tracker = () =>{
         .then(({payload})=>{
             if(payload){
                 setTrackId("")
+                setShowError(false)
+            }
+            else{
+                setShowError(true)
             }
         })
         .catch(err=>{
+            setShowError(true)
             return err
         })
     }
@@ -42,7 +48,7 @@ export const Tracker = () =>{
         return (
             <div className="h-40 flex flex-col items-center justify-center text-center text-[#AAAAAA] gap-3">
                 <img src={openBox} className="w-16 h-auto" alt="empty box"/>
-                We could not associate any record withe code you<br className="hidden md:block"/> entered, review the code and try again
+                We could not associate any record with the code you<br className="hidden md:block"/> entered, review the code and try again
             </div>
         )
     }
@@ -57,7 +63,10 @@ export const Tracker = () =>{
             <div className="mt-9">
                 {loadingOrder ? 
                     ""
-                :(currentOrder && Object.keys(currentOrder).length > 0) ? <OrderPane order={currentOrder}/> : <ErrorFeedback/>}
+                :
+                showError ? <ErrorFeedback/>
+                :
+                (currentOrder && Object.keys(currentOrder).length > 0) && <OrderPane order={currentOrder}/>}
             </div>
         </div>
     )

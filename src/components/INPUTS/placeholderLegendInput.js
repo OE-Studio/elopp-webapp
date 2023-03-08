@@ -9,6 +9,8 @@ export default function PlaceholderLegendInput({placeholder, onChange, name, typ
 
     const focus = () =>{
         inputRef.current.focus()
+        title.current.classList.remove("top-6")
+        title.current.classList.add("top-2")
     }
 
     const movePlaceholder = () =>{

@@ -131,7 +131,7 @@ export const CheckoutForm = () =>{
                     <div className="divide-y divide-[#DFDFDF] border-b border-b-[#DFDFDF]">
                         <PlaceholderLegendInput value={formUserDetails.name} disabled={cart.length === 0} onChange={userDetailsHandler} name="name" placeholder="Name"/>
                         <PlaceholderLegendInput value={formUserDetails.email} disabled={cart.length === 0} onChange={userDetailsHandler} name="email" placeholder="Email" type="email"/>
-                        <PlaceholderLegendInput value={formUserDetails.phoneNumber} disabled={cart.length === 0} type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
+                        <PlaceholderLegendInput value={formUserDetails.phoneNumber} disabled={cart.length === 0} type="tel" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
 
                         <div className="w-full relative">
                             <select defaultValue={formUserDetails.state} disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-base md:text-sm disabled:text-[#898989]">
@@ -162,6 +162,7 @@ export const CheckoutForm = () =>{
                         </div>
 
                         <PlaceholderLegendInput value={formUserDetails.address} disabled={cart.length === 0} onChange={userDetailsHandler} name="address" placeholder="Address"/>
+
                         <PlaceholderLegendInput value={formUserDetails.landmark} disabled={cart.length === 0} onChange={userDetailsHandler} placeholder="Landmark" name="landmark"/>
                     </div>
 
@@ -170,7 +171,7 @@ export const CheckoutForm = () =>{
                             Continue <ArrowRight/>
                         </button>
 
-                        <button onClick={()=>navigate("/order-confirmation")} disabled={disableButton}  className="bg-black inline-flex items-center justify-between text-white h-14 px-3 rounded-full mt-4 w-full lg:hidden disabled:bg-[#878585] disabled:cursor-not-allowed">
+                        <button onClick={()=>navigate("/order-confirmation")} disabled={disableButton}  className="bg-black inline-flex items-center justify-between text-white h-14 px-6 rounded-full mt-4 w-full lg:hidden disabled:bg-[#878585] disabled:cursor-not-allowed">
                             Continue <ArrowRight/>
                         </button>
                     </div>

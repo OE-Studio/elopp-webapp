@@ -12,22 +12,21 @@ import aesthetics from '../../assets/images/elupAesthetic.png'
 import { WhiteClose } from "../../assets/icons/whiteClose";
 import { Link } from "react-router-dom";
 import { Arrow45 } from "../../assets/icons/arrow45";
+import { updateFilterList } from "../../features/cartSlice";
 
 const Popup = ({closeHandler,children}) =>{
     
     return (
-        <div className="fixed h-screen w-screen p-5 bg-[#3e3e3e] bg-opacity-30 backdrop-blur-lg z-[3000] top-0 left-0">
+        <div className="fixed h-screen w-screen p-5 bg-[#3e3e3e] bg-opacity-30 backdrop-blur-lg z-[3000] top-0 left-0 lg:hidden">
             <div className="w-full h-full overflow-y-scroll flex items-center justify-center relative">
-                <div className="relative w-full h-auto">
+                <div className="relative w-full md:w-auto h-auto inline-block mx-auto">
                     {children}
 
-                    <div onClick={closeHandler} className="w-11 h-11 bg-black soft-shadow rounded-full flex items-center justify-center absolute -top-14 right-0 dark-hover">
+                    <div onClick={closeHandler} className="w-11 h-11 bg-black soft-shadow rounded-full flex items-center justify-center absolute -top-14 right-0 md:-right-6 dark-hover">
                         <WhiteClose/>
                     </div>
                 </div>
-            </div>
-
-            
+            </div>  
         </div>
     )
 }
@@ -56,6 +55,10 @@ export const LandingPage = () =>{
     }, [filterList, allItems])
 
     const openTweeter = ()=> window.open("https://twitter.com/StephenMuoka6?s=20", "_blank")
+
+    const toggleAllItems = () =>{
+        dispatch(updateFilterList("all"))
+    }
 
     return (
         <div>
@@ -91,7 +94,7 @@ export const LandingPage = () =>{
                     :
                     products.length === 0 
                     ?(
-                        <EmptyState/>
+                        <EmptyState onClick={toggleAllItems}/>
                     )
                     : (
                         <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 w-full">

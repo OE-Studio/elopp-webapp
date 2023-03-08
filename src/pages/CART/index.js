@@ -16,7 +16,7 @@ export const Cart = () =>{
 
     return (
         <div>
-            <Header title="Check out" text="Delivery time may take 3-5 working days, depending on our delivery partners. However, you can track status of delivery after pre-order. "/>
+            <Header title="Check out" text="Delivery time may take 3-5 working days after print, depending on our delivery partners. However, you can track status of delivery after pre-order."/>
 
             <div className="flex mt-10 xl:mt-20 lg:gap-8 xl:gap-20">
                 <div className="w-full lg:w-3/4 ">

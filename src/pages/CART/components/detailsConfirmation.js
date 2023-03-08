@@ -108,7 +108,7 @@ export const DetailsConfirmation = () =>{
                     </div>
 
                     <div className="flex justify-end">
-                        <button onClick={processPayment} disabled={loadingSubmitOrder} className="bg-black flex w-full lg:w-auto lg:inline-flex items-center justify-between lg:justify-center gap-2 text-white h-12 lg:h-9 px-3 rounded-full mt-4 disabled:cursor-progress">
+                        <button onClick={processPayment} disabled={loadingSubmitOrder} className="bg-black flex w-full lg:w-auto lg:inline-flex items-center justify-between lg:justify-center gap-2 text-white h-12 lg:h-9 px-6 rounded-full mt-4 disabled:cursor-progress">
                             Pay now 
                             {loadingSubmitOrder ? <WhiteLoader/> : <ArrowRight/>}
                         </button>

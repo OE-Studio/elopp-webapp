@@ -20,6 +20,8 @@ const Card = ({item})=>{
 
     const dispatch = useDispatch()
 
+    console.log(item)
+
     const addOne = () =>{
         setNewQuantity(prev=>{
             dispatch(updateSingleItem({id,quantity:prev + 1}))
@@ -53,8 +55,8 @@ const Card = ({item})=>{
                 {/* top */}
                 <div className="flex justify-between items-start w-full">
                     <div className="block w-3/4">
-                        <p className="text-lg">{name}</p>
-                        <p className="xl:py-4 text-sm text-[#898989]">{description}</p>
+                        <p className="text-sm md:text-lg">{name}</p>
+                        <p className="mt-2 xl:mt-4 text-xs md:text-sm text-[#898989]">{description}</p>
                     </div>
                     <div className="text-lg hidden lg:inline-block">&#8358; {price.toLocaleString()}</div>
                 </div>
@@ -77,10 +79,11 @@ const Card = ({item})=>{
                             <label className="text-[#898989] text-lg">Size</label>
 
                             <div className="inline-flex relative">
-                                <select onChange={updateSize} value={newSize} className="size-select border border-[#DFDFDF] rounded-full h-9 px-3">
-                                    {"S,M,L,XL,XXL".split(",").map(s=>{
+                                <select onChange={updateSize} value={newSize} className="size-select border border-[#DFDFDF] rounded-full h-9 px-3 pr-7">
+                                    {item.availableSize.map(s=>{
                                         return <option value={s}>{s}</option>
                                     })}
+                                    {item.availableSize.length === 0 && <option>No Size</option>}
                                 </select>
 
                                 <div className="absolute top-1/2 right-2 -translate-y-1/2 inline-block pointer-events-none">
@@ -111,9 +114,9 @@ const Card = ({item})=>{
                             </div>
                         </div>
 
-                        <div className="inline-flex relative">
-                            <select onChange={updateSize} value={newSize} className="size-select border border-[#DFDFDF] rounded-full h-9 px-3">
-                                {"S,M,L,XL,XXL".split(",").map(s=>{
+                        {item.availableSize.length > 0 && <div className="inline-flex relative">
+                            <select onChange={updateSize} value={newSize} className="size-select border border-[#DFDFDF] rounded-full h-9 px-3 pr-7">
+                                {item.availableSize.map(s=>{
                                     return <option value={s}>{s}</option>
                                 })}
                             </select>
@@ -121,7 +124,7 @@ const Card = ({item})=>{
                             <div className="absolute top-1/2 right-2 -translate-y-1/2 inline-block pointer-events-none">
                                 <ArrowDown/>
                             </div>
-                        </div>
+                        </div>}
                     </div>
 
                     <div className="flex items-center justify-between">
@@ -140,7 +143,7 @@ const Card = ({item})=>{
 export const CartItemCard = ()=>{
     const {cart} = useSelector(state=>state.cart)
     return (
-        <div className="">
+        <div className="pb-40 md:pb-20">
             {cart.length === 0 ? (
                 <div className="w-full flex items-center justify-center h-96 bg-[#F9F9F9]">
                     <div className="inline-flex flex-col items-center justify-center">
@@ -160,8 +163,8 @@ export const CartItemCard = ()=>{
                 </div>
             )}
 
-            {<div className="flex items-center mt-4 lg:hidden fixed bottom-16 right-0 px-5 w-full">
-                <Link to="/checkout" className="bg-black flex items-center justify-between text-white h-14 px-3 rounded-full dark-hover w-full z-[4000]">
+            {<div className="flex items-center lg:hidden fixed bottom-8 right-0 px-5 w-full">
+                <Link to="/checkout" className="bg-black flex items-center justify-between text-white h-14 px-6 rounded-full dark-hover w-full z-[4000]">
                     Complete checkout <ArrowRight/>
                 </Link>
             </div>}
