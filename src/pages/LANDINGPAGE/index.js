@@ -71,7 +71,7 @@ export const LandingPage = () =>{
                 </p>
             </div>
 
-            <div className="flex items-center justify-start lg:justify-center mt-5 2xl:mt-10">
+            <div className="flex items-center justify-start md:justify-center mt-5 2xl:mt-10">
                 <Link to="/article" className=" inline-flex items-center justify-center border border-[#DFDFDF] rounded-full px-4 py-3 gap-3 light-hover">
                     Read our why
                     <Arrow45/>
