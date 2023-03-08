@@ -89,6 +89,15 @@ export const CheckoutForm = () =>{
             if(detail === "landmark") {
                 return false
             }
+            else if(detail === "email"){
+                if(!formUserDetails[detail].includes("@")){
+                    return true
+                }
+                else {
+                    return false
+                }
+                
+            }
             else return formUserDetails[detail] === ""
         })
 
@@ -107,11 +116,11 @@ export const CheckoutForm = () =>{
     }
 
     return (
-        <div className="lg:sticky lg:top-32 lg:left-0 pt-0 lg:pt-0">
+        <div className="">
             <form>
                 <div className="text-3xl font-bold lg:text-sm lg:font-medium">Complete checkout</div>
 
-                <div className="bg-[#F9F9F9] p-6 mt-2 lg:mt-1">
+                <div className="bg-[#F9F9F9] p-6 mt-2">
                     <div className="space-y-2 bg-white p-4">
                         <p className="text-xs text-[#898989]">Subtotal</p>
                         <p className="text-2xl">&#8358; {totalAmount.toLocaleString()}</p>
@@ -120,12 +129,12 @@ export const CheckoutForm = () =>{
 
                     <p className="text-xs text-[#898989] mt-4">User Information</p>
                     <div className="divide-y divide-[#DFDFDF] border-b border-b-[#DFDFDF]">
-                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="name" placeholder="Name"/>
-                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="email" placeholder="Email"/>
-                        <PlaceholderLegendInput disabled={cart.length === 0} type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
+                        <PlaceholderLegendInput value={formUserDetails.name} disabled={cart.length === 0} onChange={userDetailsHandler} name="name" placeholder="Name"/>
+                        <PlaceholderLegendInput value={formUserDetails.email} disabled={cart.length === 0} onChange={userDetailsHandler} name="email" placeholder="Email" type="email"/>
+                        <PlaceholderLegendInput value={formUserDetails.phoneNumber} disabled={cart.length === 0} type="number" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
 
                         <div className="w-full relative">
-                            <select disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
+                            <select defaultValue={formUserDetails.state} disabled={cart.length === 0} name="state" onChange={userDetailsHandler} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
                                 <option value="">Select State</option>
 
                                 {states && states.length > 0 && states.map(s=>{
@@ -139,7 +148,7 @@ export const CheckoutForm = () =>{
                         </div>
 
                         <div className="w-full relative">
-                            <select disabled={!formUserDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={formUserDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
+                            <select defaultValue={formUserDetails.city} disabled={!formUserDetails.state || cart.length === 0} name="city" onChange={userDetailsHandler} value={formUserDetails.city} className="size-select border-none bg-transparent focus:outline-none w-full h-16 text-xs disabled:text-[#898989]">
                                 <option value="">Select Region</option>
 
                                 {regions && regions.length > 0 && regions.map(r=>{
@@ -152,8 +161,8 @@ export const CheckoutForm = () =>{
                             </div>
                         </div>
 
-                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} name="address" placeholder="Address"/>
-                        <PlaceholderLegendInput disabled={cart.length === 0} onChange={userDetailsHandler} placeholder="Landmark" name="landmark"/>
+                        <PlaceholderLegendInput value={formUserDetails.address} disabled={cart.length === 0} onChange={userDetailsHandler} name="address" placeholder="Address"/>
+                        <PlaceholderLegendInput value={formUserDetails.landmark} disabled={cart.length === 0} onChange={userDetailsHandler} placeholder="Landmark" name="landmark"/>
                     </div>
 
                     <div className="flex justify-end">

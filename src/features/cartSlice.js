@@ -129,13 +129,13 @@ const cart = createSlice({
     },
     extraReducers:{
         [submitOrder.pending]:(state, {payload})=>{
-            state.loadingSubmitOrder = false
+            state.loadingSubmitOrder = true
         },
         [submitOrder.fulfilled]:(state, {payload})=>{
-            state.loadingSubmitOrder = true
+            state.loadingSubmitOrder = false
         },
         [submitOrder.rejected]:(state, {payload})=>{
-            state.loadingSubmitOrder = true
+            state.loadingSubmitOrder = false
         },
 
         // Fetch all items

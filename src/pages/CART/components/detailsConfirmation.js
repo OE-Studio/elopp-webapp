@@ -7,7 +7,7 @@ import {CallIcon} from '../../../assets/icons/call'
 import {LocationIcon} from '../../../assets/icons/location'
 import {SmileyIcon} from '../../../assets/icons/smiley'
 import { submitOrder } from "../../../features/cartSlice";
-import { Loader } from "../../../assets/icons/loader";
+import {WhiteLoader} from '../../../assets/icons/whiteLoader'
 import { Link } from "react-router-dom";
 import { changeCurrentStep } from "../../../features/cartSlice";
 
@@ -60,7 +60,7 @@ export const DetailsConfirmation = () =>{
             {/* <form className=""> */}
                 <div className="text-3xl font-bold lg:text-sm lg:font-medium">Complete checkout</div>
 
-                <div className="bg-white lg:bg-[#F9F9F9] lg:p-6 mt-1">
+                <div className="bg-white lg:bg-[#F9F9F9] lg:p-6 mt-2">
                     <div className="space-y-2 bg-white p-4">
                         <div className="flex items-center justify-between">
                             <p className="text-xs">User information</p>
@@ -110,7 +110,7 @@ export const DetailsConfirmation = () =>{
                     <div className="flex justify-end">
                         <button onClick={processPayment} disabled={loadingSubmitOrder} className="bg-black flex w-full lg:w-auto lg:inline-flex items-center justify-between lg:justify-center gap-2 text-white h-12 lg:h-9 px-3 rounded-full mt-4 disabled:cursor-progress">
                             Pay now 
-                            {loadingSubmitOrder ? <Loader/> : <ArrowRight/>}
+                            {loadingSubmitOrder ? <WhiteLoader/> : <ArrowRight/>}
                         </button>
                     </div>
                 </div>

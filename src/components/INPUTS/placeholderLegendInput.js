@@ -50,6 +50,15 @@ export default function PlaceholderLegendInput({placeholder, onChange, name, typ
                 spanRef.textContent = "Please enter a valid email"
             }
         }
+
+        if(value !== ""){
+            title.current.classList.add("top-2")
+            title.current.classList.remove("top-6")
+        }
+        else{
+            title.current.classList.remove("top-2")
+            title.current.classList.add("top-6")
+        }
     }, [value, type])
 
 
