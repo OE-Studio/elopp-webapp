@@ -113,7 +113,7 @@ export const ItemDetails = () =>{
                             </td>
                         </tr>
 
-                        <tr>
+                        {currentItem.availableSize.length > 0 && <tr>
                             <td>Size</td>
                             <td className="flex items-center justify-end py-4">
                                 <div className="inline-flex items-center justify-end gap-2 lg:gap-4 text-sm lg:text-base">
@@ -122,7 +122,7 @@ export const ItemDetails = () =>{
                                     })}
                                 </div>
                             </td>
-                        </tr>
+                        </tr>}
 
                         <tr>
                             <td className="grotesk">&#8358; {(currentItem.price * quantity).toLocaleString()}</td>
