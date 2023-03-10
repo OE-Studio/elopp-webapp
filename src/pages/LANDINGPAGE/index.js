@@ -33,7 +33,7 @@ const Popup = ({closeHandler,children}) =>{
 }
 
 export const LandingPage = () =>{
-    const gaEventTracker = useAnalyticsEventTracker('Visiting');
+    const gaEventTracker = useAnalyticsEventTracker('Landing page');
 
     const {cart, showDetails, loadingItems, allItems, filterList} = useSelector(state=>state.cart)
 
@@ -49,7 +49,7 @@ export const LandingPage = () =>{
 
     useEffect(()=>{
         dispatch(fetchAllIItems())
-        gaEventTracker('call')
+        gaEventTracker('visiting')
 
         // eslint-disable-next-line
     }, [dispatch])

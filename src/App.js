@@ -10,13 +10,14 @@ import { Tracker } from "./pages/TRACKER";
 import { SuccessPage } from "./pages/SUCCESS";
 import ReactGA from 'react-ga'
 
-const TRACKING_ID = process.env.REACT_APP_PUBLIC_GA_TRACKING_ID
+const TRACKING_ID = process.env.REACT_APP_GA
 ReactGA.initialize(TRACKING_ID);
 
 const App = ()=>{
   useEffect(()=>{
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
+  
   return (
     <div className="App">
           <BrowserRouter>
