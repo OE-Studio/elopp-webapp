@@ -9,6 +9,8 @@ import { Essay } from "./pages/ESSAY";
 import { Tracker } from "./pages/TRACKER";
 import { SuccessPage } from "./pages/SUCCESS";
 import ReactGA from 'react-ga'
+import { AdminView } from "./views/adminDashboard";
+import { AllTransactions } from "./pages/ALL_TRANSACTIONS";
 
 const TRACKING_ID = process.env.REACT_APP_GA
 ReactGA.initialize(TRACKING_ID);
@@ -17,7 +19,7 @@ const App = ()=>{
   useEffect(()=>{
     ReactGA.pageview(window.location.pathname + window.location.search)
   }, [])
-  
+
   return (
     <div className="App">
           <BrowserRouter>
@@ -30,6 +32,10 @@ const App = ()=>{
                 <Route path="/tracker" element={<Tracker/>}/>
                 <Route path="/success" element={<SuccessPage/>}/>
                 <Route path="/order-confirmation" element={<DetailsCheck/>}/>
+              </Route>
+
+              <Route path="/admin" element={<AdminView/>}>
+                <Route path="/admin/transactions/123" element={<AllTransactions/>}/>
               </Route>
 
               <Route element={<LandingPage/>}></Route>
