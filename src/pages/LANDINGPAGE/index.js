@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { Arrow45 } from "../../assets/icons/arrow45";
 import { updateFilterList } from "../../features/cartSlice";
 import useAnalyticsEventTracker from "../../useAnalyticsEventTracker";
+import ReactGA from 'react-ga4'
 
 const Popup = ({closeHandler,children}) =>{
     
@@ -34,6 +35,12 @@ const Popup = ({closeHandler,children}) =>{
 
 export const LandingPage = () =>{
     const gaEventTracker = useAnalyticsEventTracker('Landing page');
+
+    ReactGA.event({
+        category:"Visit page",
+        action:"visit landing page",
+        label:"visitor",
+    })
 
     const {cart, showDetails, loadingItems, allItems, filterList} = useSelector(state=>state.cart)
 

@@ -8,7 +8,7 @@ import { Checkout } from "./pages/CHECKOUT";
 import { Essay } from "./pages/ESSAY";
 import { Tracker } from "./pages/TRACKER";
 import { SuccessPage } from "./pages/SUCCESS";
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga4'
 import { AdminView } from "./views/adminDashboard";
 import { AllTransactions } from "./pages/ALL_TRANSACTIONS";
 
@@ -16,9 +16,9 @@ const TRACKING_ID = process.env.REACT_APP_GA
 ReactGA.initialize(TRACKING_ID);
 
 const App = ()=>{
+  
   useEffect(()=>{
-    ReactGA.pageview(window.location.pathname + window.location.search)
-    console.log(TRACKING_ID)
+    ReactGA.send({ hitType: "pageview", page:window.location.pathname, title: "Page visit" })
   }, [])
 
   return (
