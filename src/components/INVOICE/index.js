@@ -23,7 +23,7 @@ export const Invoice = ({order}) =>{
 
                     <div style={{width:"80px",height:"80px", padding:"16px", border:"1px solid #DFDFDF"}}>
                         <QRCode 
-                            value={`https://store.oestudio.digital/tracker?id=${order.trackingId}`}
+                            value={`https://store.oestudio.digital/tracking?id=${order.trackingId}`}
                             style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                         />
                     </div>

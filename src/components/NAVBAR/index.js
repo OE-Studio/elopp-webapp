@@ -18,7 +18,7 @@ const NavBar = () =>{
                 </Link>
 
                 <div className="flex items-center gap-4">
-                    <Link to="/tracker" className="inline-flex justify-center items-center gap-2 bg-white h-9 pl-3 pr-4 rounded-full soft-shadow cursor-pointer light-hover grotesk">
+                    <Link to="/tracking" className="inline-flex justify-center items-center gap-2 bg-white h-9 pl-3 pr-4 rounded-full soft-shadow cursor-pointer light-hover grotesk">
                         <TruckIcon/>
                         Track order
                     </Link>

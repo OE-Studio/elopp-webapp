@@ -30,7 +30,7 @@ const App = ()=>{
                 <Route path="/cart" element={<Cart/>}/>
                 <Route path="/checkout" element={<Checkout/>}/>
                 <Route path="/article" element={<Essay/>}/>
-                <Route path="/tracker" element={<Tracker/>}/>
+                <Route path="/tracking" element={<Tracker/>}/>
                 <Route path="/success" element={<SuccessPage/>}/>
                 <Route path="/order-confirmation" element={<DetailsCheck/>}/>
               </Route>
