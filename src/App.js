@@ -38,7 +38,7 @@ const App = ()=>{
                 <Route path="/admin/transactions/123" element={<AllTransactions/>}/>
               </Route>
 
-              <Route element={<LandingPage/>}></Route>
+              <Route element={<MainView/>}></Route>
               
             </Routes>
           </BrowserRouter>
