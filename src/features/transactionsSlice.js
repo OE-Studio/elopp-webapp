@@ -8,7 +8,11 @@ const initialState={
     totalPage:1,
     currentPage:1,
     totalTransactions:1,
-    pageSize:1
+    pageSize:1,
+    stateCount:0,
+    totalOrderPrice:0,
+    numberOfStates:0,
+    totalSaleAmount:0
 }
 
 export const fetchAllTransactions = createAsyncThunk(
@@ -45,6 +49,8 @@ const transactions = createSlice({
             state.totalPage = payload.totalPageCount
             state.currentPage = payload.currentPage
             state.totalTransactions = payload.totalSuccessfulTransaction
+            state.numberOfStates = payload.stateCount
+            state.totalSaleAmount = payload.totalOrderPrice
         },
         [fetchAllTransactions.rejected]:(state, payload)=>{
             state.loadingTransactions = false

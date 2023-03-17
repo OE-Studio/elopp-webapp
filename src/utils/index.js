@@ -8,8 +8,8 @@ export const trackstatus = [
     {
         step:"Printing status",
         detail:"Your order has been sent to the printer",
-        date:"",
-        status:'pending',
+        date:"17/03/2023",
+        status:'completed',
     },
     {
         step:"Order submitted for delivery",
