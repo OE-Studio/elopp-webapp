@@ -22,7 +22,6 @@ export const fetchAllTransactions = createAsyncThunk(
             let response = await axios.get(endpoints.allTransactions + `?page=${payload.page}&limit=${payload.limit}`)
             let data = await response.data
 
-            console.log(data)
             if(data.success){
                 return data
             }
