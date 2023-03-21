@@ -130,7 +130,9 @@ export const CheckoutForm = () =>{
                     <p className="text-xs text-[#898989] mt-4">User Information</p>
                     <div className="divide-y divide-[#DFDFDF] border-b border-b-[#DFDFDF]">
                         <PlaceholderLegendInput value={formUserDetails.name} disabled={cart.length === 0} onChange={userDetailsHandler} name="name" placeholder="Name"/>
+                        
                         <PlaceholderLegendInput value={formUserDetails.email} disabled={cart.length === 0} onChange={userDetailsHandler} name="email" placeholder="Email" type="email"/>
+
                         <PlaceholderLegendInput value={formUserDetails.phoneNumber} disabled={cart.length === 0} type="tel" onChange={userDetailsHandler} name="phoneNumber" placeholder="Phone number"/>
 
                         <div className="w-full relative">

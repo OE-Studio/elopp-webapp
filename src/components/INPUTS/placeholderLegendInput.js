@@ -8,9 +8,11 @@ export default function PlaceholderLegendInput({placeholder, onChange, name, typ
     const [showError, setShowError] = useState(false)
 
     const focus = () =>{
-        inputRef.current.focus()
-        title.current.classList.remove("top-6")
-        title.current.classList.add("top-2")
+        if(!disabled) {
+            inputRef.current.focus()
+            title.current.classList.remove("top-6")
+            title.current.classList.add("top-2")
+        }
     }
 
     const movePlaceholder = () =>{
@@ -70,7 +72,7 @@ export default function PlaceholderLegendInput({placeholder, onChange, name, typ
             {placeholder} 
             {" "} {showError && <span className='text-[#EA596E]' ref={el=>spanRef=el}>This field is required</span>}
         </p>
-        <input disabled={disabled} required onChange={onChange} value={value} name={name} type={type} onBlur={checkInput} onFocus={movePlaceholder} ref={inputRef} className='w-full bg-transparent h-10 outline-none text-base md:text-sm'/>
+        <input disabled={disabled} required onChange={onChange} value={value} name={name} type={type} onBlur={checkInput} onFocus={movePlaceholder} ref={inputRef} className='w-full bg-transparent h-10 outline-none text-base md:text-sm disabled:cursor-not-allowed'/>
     </div>
   )
 }

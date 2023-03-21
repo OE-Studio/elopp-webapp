@@ -127,9 +127,9 @@ export const ItemDetails = () =>{
                         <tr>
                             <td className="grotesk">&#8358; {(currentItem.price * quantity).toLocaleString()}</td>
                             <td className="flex items-center justify-end py-4">
-                                <div onClick={updateCartHandler} className={`dark-hover inline-flex items-center justify-center h-11 px-4 bg-[#333333] gap-2 text-white rounded-full cursor-pointer grotesk`}>
+                                <button disabled={true} onClick={updateCartHandler} className={`dark-hover inline-flex items-center justify-center h-11 px-4 bg-[#333333] gap-2 text-white rounded-full cursor-pointer grotesk disabled:cursor-not-allowed disabled:bg-slate-400`}>
                                     <PlusIcon/> Add to cart
-                                </div>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
