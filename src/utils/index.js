@@ -15,7 +15,7 @@ export const trackstatus = [
         step:"Order submitted for delivery",
         detail:"Your order has been packaged for delivery.",
         date:"",
-        status:'pending',
+        status:'completed',
     },
     {
         step:"Order In transit",
